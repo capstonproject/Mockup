@@ -1,9 +1,10 @@
 D:\GitHub\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\bin\Debug\MockupProject_K30_DotNet.exe.config
-D:\MockProject\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\bin\Debug\MockupProject_K30_DotNet.exe.config
 D:\GitHub\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\bin\Debug\MockupProject_K30_DotNet.exe
 D:\GitHub\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\bin\Debug\MockupProject_K30_DotNet.pdb
 D:\GitHub\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\MockupProject_K30_DotNet.csprojResolveAssemblyReference.cache
+D:\GitHub\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\LoadingWindow.baml
 D:\GitHub\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\MainWindow.baml
+D:\GitHub\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\LoadingWindow.g.cs
 D:\GitHub\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\MainWindow.g.cs
 D:\GitHub\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\App.g.cs
 D:\GitHub\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\MockupProject_K30_DotNet_MarkupCompile.cache
