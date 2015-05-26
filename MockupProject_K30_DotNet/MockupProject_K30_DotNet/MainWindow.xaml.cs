@@ -48,9 +48,12 @@ namespace MockupProject_K30_DotNet
             }
         }
 
-        private void Canvas_DragEnter_1(object sender, System.Windows.DragEventArgs e)
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
-
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
         }
     }
 }
