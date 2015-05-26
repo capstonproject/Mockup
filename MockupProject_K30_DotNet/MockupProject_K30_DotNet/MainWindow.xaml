@@ -46,16 +46,16 @@
                 <Path Data="F1M0,6.422L0,0 0.735,0 0.735,5.75 3.579,5.75 3.579,6.422 0,6.422" Fill="#FF2D2D2D" Height="6.422" Canvas.Left="218.976" Canvas.Top="25.597" Width="3.578"/>
                 <Path Data="F1M4.062,1.875C4.062,2.531 3.828,3.031 3.39,3.375 2.953,3.718 2.312,3.89 1.5,3.89L0.734,3.89 0.734,6.422 0,6.422 0,0 1.656,0C3.25,0,4.062,0.625,4.062,1.875 M0.734,3.25L1.406,3.25C2.062,3.25 2.547,3.156 2.844,2.937 3.14,2.718 3.297,2.375 3.297,1.906 3.297,1.484 3.156,1.172 2.875,0.953 2.594,0.75 2.156,0.64 1.578,0.64L0.734,0.64 0.734,3.25" Fill="#FF2D2D2D" Height="6.422" Canvas.Left="223.959" Canvas.Top="25.597" Width="4.062"/>
             </Canvas>
-            <Button Height="15" Canvas.Left="1247" Canvas.Top="2" Width="33" Background="{x:Null}" BorderBrush="White" Click="Button_Click">
+            <Button Height="15" Canvas.Left="1247" Canvas.Top="2" Width="33" Background="{x:Null}" BorderBrush="White" Click="Button_Close">
                 <Path Data="F1M7.722,1.201L5.049,3.874 7.611,6.433 6.459,7.586 3.897,5.025 1.201,7.722 0,6.52 2.697,3.823 0.135,1.262 1.286,0.111 3.848,2.672 6.52,0z" Fill="#FF808180" Height="7.722" Width="7.722"/>
             </Button>
-            <Button Height="15" Canvas.Left="1214" Canvas.Top="2" Width="33" RenderTransformOrigin="1.152,0.458" Background="{x:Null}" BorderBrush="White" Click="Button_Click_1">
+            <Button Height="15" Canvas.Left="1214" Canvas.Top="2" Width="33" RenderTransformOrigin="1.152,0.458" Background="{x:Null}" BorderBrush="White" Click="Button_Maximize">
                 <Canvas Height="8.1" Width="8">
                     <Path Data="F1M0,0L0,4.067 0.816,4.067 0.816,1.635 4.816,1.635 4.816,4.834 2.45,4.834 2.45,5.667 5.633,5.667 5.633,0z" Fill="#FF808180" Height="5.667" Canvas.Left="2.367" Width="5.633"/>
                     <Path Data="F1M4.817,4.834L0.817,4.834 0.817,1.633 4.817,1.633z M0,5.667L5.634,5.667 5.634,0 0,0z" Fill="#FF808180" Height="5.667" Canvas.Top="2.433" Width="5.634"/>
                 </Canvas>
             </Button>
-            <Button Height="15" Canvas.Left="1182" Width="32" Background="{x:Null}" BorderThickness="0" BorderBrush="White" Click="Button_Click_3" Canvas.Top="2">
+            <Button Height="15" Canvas.Left="1182" Width="32" Background="{x:Null}" BorderThickness="0" BorderBrush="White" Click="Button_Minimize" Canvas.Top="2">
                 <Path Data="F1M7.2,2.5L0,2.5 0,0 7.2,0z" Fill="#FF808180" Height="2.5" Width="7.2"/>
             </Button>
         </Canvas>

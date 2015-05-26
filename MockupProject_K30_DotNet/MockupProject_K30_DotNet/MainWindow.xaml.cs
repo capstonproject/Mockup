@@ -25,25 +25,31 @@ namespace MockupProject_K30_DotNet
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Close(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Minimize(object sender, RoutedEventArgs e)
         {
-            this.WindowState = WindowState.Maximized;
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void Button_Maximize(object sender, RoutedEventArgs e)
+        {
+            if (this.WindowState == WindowState.Normal)
+            {
+                this.WindowState = WindowState.Maximized;
+            }
+            else
+            {
+                this.WindowState = WindowState.Normal;
+            }
         }
 
         private void Canvas_DragEnter_1(object sender, System.Windows.DragEventArgs e)
         {
 
         }
-
-        private void Button_Click_3(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = WindowState.Minimized;
-        }
-
     }
 }
