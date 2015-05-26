@@ -12,3 +12,18 @@ D:\GitHub\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\Moc
 D:\GitHub\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\MockupProject_K30_DotNet.csproj.GenerateResource.Cache
 D:\GitHub\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\MockupProject_K30_DotNet.exe
 D:\GitHub\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\MockupProject_K30_DotNet.pdb
+D:\Mock Object\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\bin\Debug\MockupProject_K30_DotNet.exe.config
+D:\Mock Object\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\MockupProject_K30_DotNet.exe
+D:\Mock Object\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\MockupProject_K30_DotNet.pdb
+D:\Mock Object\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\bin\Debug\MockupProject_K30_DotNet.exe
+D:\Mock Object\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\bin\Debug\MockupProject_K30_DotNet.pdb
+D:\Mock Object\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\MockupProject_K30_DotNet.csprojResolveAssemblyReference.cache
+D:\Mock Object\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\LoadingWindow.baml
+D:\Mock Object\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\MainWindow.baml
+D:\Mock Object\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\LoadingWindow.g.cs
+D:\Mock Object\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\MainWindow.g.cs
+D:\Mock Object\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\App.g.cs
+D:\Mock Object\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\MockupProject_K30_DotNet_MarkupCompile.cache
+D:\Mock Object\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\MockupProject_K30_DotNet.g.resources
+D:\Mock Object\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\MockupProject_K30_DotNet.Properties.Resources.resources
+D:\Mock Object\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\MockupProject_K30_DotNet.csproj.GenerateResource.Cache

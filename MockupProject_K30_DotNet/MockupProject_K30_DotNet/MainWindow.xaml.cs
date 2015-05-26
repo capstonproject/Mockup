@@ -23,6 +23,7 @@ namespace MockupProject_K30_DotNet
         public MainWindow()
         {
             InitializeComponent();
+            new LoadingWindow().ShowDialog();
         }
 
         private void Button_Close(object sender, RoutedEventArgs e)
