@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MockupProject_K30_DotNet
+namespace MockupProject_K30_DotNet.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MainApplication.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainApplication : Window
     {
-        public MainWindow()
+        public MainApplication()
         {
             InitializeComponent();
             new LoadingWindow().ShowDialog();
@@ -64,18 +63,6 @@ namespace MockupProject_K30_DotNet
                 {
                     this.WindowState = WindowState.Normal;
                 }
-            }
-        }
-
-        private void Button_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            if (this.WindowState == WindowState.Normal)
-            {
-                this.WindowState = WindowState.Maximized;
-            }
-            else
-            {
-                this.WindowState = WindowState.Normal;
             }
         }
     }
