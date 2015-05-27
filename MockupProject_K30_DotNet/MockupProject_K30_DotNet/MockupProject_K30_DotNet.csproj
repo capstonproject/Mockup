@@ -53,9 +53,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="View\TabProperty.xaml.cs">
-      <DependentUpon>TabProperty.xaml</DependentUpon>
-    </Compile>
     <Page Include="View\LoadingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -74,10 +71,6 @@
     <Compile Include="View\MainApplication.xaml.cs">
       <DependentUpon>MainApplication.xaml</DependentUpon>
     </Compile>
-    <Page Include="View\TabProperty.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
