@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MockupProject_K30_DotNet.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,10 +20,13 @@ namespace MockupProject_K30_DotNet.View
     /// </summary>
     public partial class MainApplication : Window
     {
+        
+
         public MainApplication()
         {
             InitializeComponent();
             new LoadingWindow().ShowDialog();
+            mainGrid.DataContext = new MainViewModel();
         }
 
         private void Button_Close(object sender, RoutedEventArgs e)
@@ -63,7 +67,7 @@ namespace MockupProject_K30_DotNet.View
                 {
                     this.WindowState = WindowState.Normal;
                 }
-            }
+            }              
         }
     }
 }

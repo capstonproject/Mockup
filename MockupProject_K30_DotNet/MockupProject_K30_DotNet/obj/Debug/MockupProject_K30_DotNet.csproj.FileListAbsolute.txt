@@ -13,3 +13,17 @@ D:\GitHub\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\Vie
 D:\GitHub\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\View\LoadingWindow.g.cs
 D:\GitHub\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\View\MainApplication.baml
 D:\GitHub\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\View\MainApplication.g.cs
+D:\GitHub\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\bin\Debug\System.Windows.Interactivity.dll
+D:\GitHub\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\bin\Debug\de\System.Windows.Interactivity.resources.dll
+D:\GitHub\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\bin\Debug\en\System.Windows.Interactivity.resources.dll
+D:\GitHub\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\bin\Debug\es\System.Windows.Interactivity.resources.dll
+D:\GitHub\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\bin\Debug\fr\System.Windows.Interactivity.resources.dll
+D:\GitHub\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\bin\Debug\it\System.Windows.Interactivity.resources.dll
+D:\GitHub\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\bin\Debug\ja\System.Windows.Interactivity.resources.dll
+D:\GitHub\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\bin\Debug\ko\System.Windows.Interactivity.resources.dll
+D:\GitHub\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\bin\Debug\ru\System.Windows.Interactivity.resources.dll
+D:\GitHub\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\bin\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
+D:\GitHub\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\bin\Debug\zh-Hant\System.Windows.Interactivity.resources.dll
+C:\Users\trungh2\Desktop\MockupProject_K30_DotNet\MockupProject_K30_DotNet\bin\Debug\MockupProject_K30_DotNet.exe.config
+C:\Users\trungh2\Desktop\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\MockupProject_K30_DotNet.exe
+C:\Users\trungh2\Desktop\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\MockupProject_K30_DotNet.pdb
