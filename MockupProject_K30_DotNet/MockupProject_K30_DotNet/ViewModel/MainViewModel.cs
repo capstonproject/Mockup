@@ -73,7 +73,11 @@ namespace MockupProject_K30_DotNet.ViewModel
         }
         private void CloseTab()
         {
-            this.Tabs.Remove(this.SelectedTab);
+            if (SelectedTab != null)
+            {
+                this.Tabs.Remove(this.SelectedTab);
+            }            
+            SelectedTab = null;
         }
 
         private ICommand selectedChangedCommand;
@@ -91,27 +95,35 @@ namespace MockupProject_K30_DotNet.ViewModel
 
         private void AddTab()
         {
-            if (SelectedTab != null)
-            {
-                var tabTemp = SelectedTab as TabItem;
+            //if (SelectedTab != null)
+            //{
+            //    var tabTemp = SelectedTab as TabItem;
 
-            }
+            //}
             int count = Tabs.Count();
             TabItem tab = new TabItem();
             tab.Header = string.Format("Tab {0}", count);
             tab.Content = string.Format("Tab {0} content", count);
-            tab.CloseButtonVisibility = Visibility.Visible.ToString();
+            tab.CloseButtonVisibility = Visibility.Hidden.ToString();
             var tempHeaderTab = tab.Header;
             Tabs.Insert(count - 1, tab);           
             SelectedTab = Tabs.Where(tabAdd => tabAdd.Header.Equals(tempHeaderTab)).First();
             
         }
         private void ChangeSelected()
-        {            
+        {
+            foreach (var tab in this.Tabs)
+            {
+                tab.CloseButtonVisibility = Visibility.Hidden.ToString();
+            }
             if (this.SelectedTab != null && this.SelectedTab.Header.Equals("+") )
             {                
                 AddTab();
-            }            
+            }
+            else if (this.SelectedTab != null)
+            {
+                this.Tabs.Where(tab => tab.Header.Equals(this.SelectedTab.Header)).First().CloseButtonVisibility = Visibility.Visible.ToString();
+            }          
         }
 
         public MainViewModel()
@@ -127,13 +139,13 @@ namespace MockupProject_K30_DotNet.ViewModel
             TabItem tab2 = new TabItem();
             tab2.Header = "tab2";
             tab2.Content = "example2";
-            tab2.CloseButtonVisibility = Visibility.Visible.ToString();
+            tab2.CloseButtonVisibility = Visibility.Hidden.ToString();
             this.Tabs.Add(tab2);
 
             TabItem tab3 = new TabItem();
             tab3.Header = "tab3";
             tab3.Content = "example3";
-            tab3.CloseButtonVisibility = Visibility.Visible.ToString();
+            tab3.CloseButtonVisibility = Visibility.Hidden.ToString();
             this.Tabs.Add(tab3);
 
             TabItem tabAdd = new TabItem();
