@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MockupProject_K30_DotNet.DataAccessLayer;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.DirectoryServices;
@@ -12,24 +13,11 @@ namespace MockupProject_K30_DotNet.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
+        #region Properties
         public enum Visibility
         {            
             Hidden,            
             Visible
-        }
-        
-        private ICommand addTabCommand;
-        public ICommand AddTabCommand
-        {
-            get
-            {
-                if (addTabCommand == null)
-                {
-                    addTabCommand = new RelayCommand(param => this.AddTab(),
-                        null);
-                }
-                return addTabCommand;
-            }
         }
         
         private ObservableCollection<TabItem> tabs;
@@ -60,6 +48,29 @@ namespace MockupProject_K30_DotNet.ViewModel
             }
         }
 
+        private Employee _resultEmployee;
+        public Employee ResultEmployee
+        {
+            get { return _resultEmployee; }
+            set
+            {
+                _resultEmployee = value;
+                NotifyPropertyChanged("ResultEmployee");
+            }
+        }
+        private string _keySearch;
+        public string KeySearch
+        {
+            get { return _keySearch; }
+            set
+            {
+                _keySearch = value;
+                NotifyPropertyChanged("KeySearch");
+            }
+        }
+        #endregion //Properties
+
+        #region Command
         private ICommand closeTabCommand;
         public ICommand CloseTabCommand
         {
@@ -94,6 +105,26 @@ namespace MockupProject_K30_DotNet.ViewModel
             }
         }
 
+        private ICommand addTabCommand;
+        public ICommand AddTabCommand
+        {
+            get
+            {
+                if (addTabCommand == null)
+                {
+                    addTabCommand = new RelayCommand(param => this.AddTab(),
+                        null);
+                }
+                return addTabCommand;
+            }
+        }
+
+        public ICommand SearchEmployeeCommand { get; set; }
+        public ICommand SaveEmployeeCommand { get; set; }
+
+        
+        #endregion //Command
+
         private void AddTab()
         {            
             int count = Tabs.Count();
@@ -122,53 +153,66 @@ namespace MockupProject_K30_DotNet.ViewModel
             }          
         }
 
+        private void SearchEmployee(object param)
+        {
+            if (new EmployeeDAL().SearchEmployeeByName(KeySearch).Count > 0)
+            {
+                ResultEmployee = new EmployeeDAL().SearchEmployeeByName(KeySearch)[0];
+            }
+            //ResultEmployee.ID = 0;
+            //ResultEmployee.FirstName = "";
+            //ResultEmployee.LastName = "";
+            //ResultEmployee.Email = "";
+            //ResultEmployee.Position = "";
+            //ResultEmployee.FSU = "";
+        }
+
+        private void SaveEmployee(object param)
+        {
+            new EmployeeDAL().AddEmployee(ResultEmployee);
+            MessageBox.Show("Saved Employee successful!");
+            KeySearch = "";
+            ResultEmployee.ID = 0;
+            ResultEmployee.FirstName = "";
+            ResultEmployee.LastName = "";
+            ResultEmployee.Email = "";
+            ResultEmployee.Position = "";
+            ResultEmployee.FSU = "";
+        }
+
         #region Constructor
         public MainViewModel()
         {
-            this.Tabs = new ObservableCollection<TabItem>();
+            SearchEmployeeCommand = new RelayCommand(SearchEmployee);
+            SaveEmployeeCommand = new RelayCommand(SaveEmployee);
+            ResultEmployee = new Employee();
 
-            TabItem tab1 = new TabItem();
-            tab1.Header = "tab1";
-            tab1.Content = "example1";
-            tab1.CloseButtonVisibility = Visibility.Visible.ToString();
-            this.Tabs.Add(tab1);
+            //this.Tabs = new ObservableCollection<TabItem>();
 
-            TabItem tab2 = new TabItem();
-            tab2.Header = "tab2";
-            tab2.Content = "example2";
-            tab2.CloseButtonVisibility = Visibility.Hidden.ToString();
-            this.Tabs.Add(tab2);
+            //TabItem tab1 = new TabItem();
+            //tab1.Header = "tab1";
+            //tab1.Content = "example1";
+            //tab1.CloseButtonVisibility = Visibility.Visible.ToString();
+            //this.Tabs.Add(tab1);
 
-            TabItem tab3 = new TabItem();
-            tab3.Header = "tab3";
-            tab3.Content = "example3";
-            tab3.CloseButtonVisibility = Visibility.Hidden.ToString();
-            this.Tabs.Add(tab3);
+            //TabItem tab2 = new TabItem();
+            //tab2.Header = "tab2";
+            //tab2.Content = "example2";
+            //tab2.CloseButtonVisibility = Visibility.Hidden.ToString();
+            //this.Tabs.Add(tab2);
 
-            TabItem tabAdd = new TabItem();
-            tabAdd.Header = "+";
-            tabAdd.CloseButtonVisibility = Visibility.Hidden.ToString();
-            this.Tabs.Add(tabAdd);
+            //TabItem tab3 = new TabItem();
+            //tab3.Header = "tab3";
+            //tab3.Content = "example3";
+            //tab3.CloseButtonVisibility = Visibility.Hidden.ToString();
+            //this.Tabs.Add(tab3);
+
+            //TabItem tabAdd = new TabItem();
+            //tabAdd.Header = "+";
+            //tabAdd.CloseButtonVisibility = Visibility.Hidden.ToString();
+            //this.Tabs.Add(tabAdd);
         }
         #endregion
 
-        #region Get all users Fsoft
-        public SearchResultCollection resultCol()
-        {
-           
-                string DomainPath = "LDAP://fsoft.fpt.vn";
-                DirectoryEntry searchRoot = new DirectoryEntry(DomainPath);
-                DirectorySearcher search = new DirectorySearcher(searchRoot);
-                search.Filter = "(&(objectClass=user)(objectCategory=person))";
-                //search.PropertiesToLoad.Add("samaccountname");
-                //search.PropertiesToLoad.Add("mail");
-                //search.PropertiesToLoad.Add("usergroup");
-                //search.PropertiesToLoad.Add("displayname");//first name
-                //SearchResult result;
-                SearchResultCollection resultCol = search.FindAll();
-            
-            return resultCol;
-        }
-        #endregion
     }
 }

@@ -57,17 +57,21 @@
                 </Canvas>
             </Canvas>
         </Grid>
-        
+
         <Grid Name="mainGrid" Margin="0,54,0,0">
             <!--<TabControl Height="947" HorizontalAlignment="Left" Margin="251,0,0,0" Name="tabControl1" VerticalAlignment="Top" Width="1015"
             ItemsSource="{Binding Tabs}" SelectedItem="{Binding SelectedTab}">
-                --><!--Bind the SelectionChanged event of the tab--><!--
+                -->
+            <!--Bind the SelectionChanged event of the tab-->
+            <!--
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="SelectionChanged">
                         <i:InvokeCommandAction Command="{Binding SelectedChangedCommand}" />
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
-                --><!--Header section--><!--
+                -->
+            <!--Header section-->
+            <!--
                 <TabControl.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal" Width="173">
@@ -81,7 +85,9 @@
                     </DataTemplate>
                 </TabControl.ItemTemplate>
 
-                --><!--Content section--><!--
+                -->
+            <!--Content section-->
+            <!--
                 <TabControl.ContentTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Content}" />
@@ -94,7 +100,19 @@
                 </TabItem>
                 <TabItem Header="Search">
                     <Grid Background="Gray">
-                        
+                        <TextBox Text="{Binding KeySearch}" Width="200" Height="30" Margin="36,23,754,862"/>
+                        <Button Content="Search" Margin="268,23,648,862" Width="75" Height="30" Command="{Binding Path=SearchEmployeeCommand}"/>
+                        <Label Content="First name:" FontSize="18" Height="30" Width="100" Margin="37,150,853,735"/>
+                        <Label Content="Last name:" FontSize="18" Height="30" Width="100" Margin="37,185,853,700"/>
+                        <Label Content="Email:" FontSize="18" Height="30" Width="100" Margin="37,220,853,665" />
+                        <Label Content="FSU:" FontSize="18" Height="30" Width="100" Margin="37,255,853,630" />
+                        <Label Content="Position:" FontSize="18" Height="30" Width="100" Margin="37,290,853,595"/>
+                        <TextBox Tag="{Binding ResultEmployee.ID}" Text="{Binding ResultEmployee.FirstName}" Height="30" Margin="165,150,578,735" TextWrapping="Wrap"/>
+                        <TextBox Text="{Binding ResultEmployee.LastName}" Height="30" Margin="165,185,578,700" TextWrapping="Wrap"/>
+                        <TextBox Text="{Binding ResultEmployee.Email}" Height="30" Margin="165,220,578,665" TextWrapping="Wrap"/>
+                        <TextBox Text="{Binding ResultEmployee.FSU}" Height="30" Margin="165,255,578,630" TextWrapping="Wrap"/>
+                        <TextBox Text="{Binding ResultEmployee.Position}" Height="30" Margin="165,290,578,595" TextWrapping="Wrap"/>
+                        <Button Content="Save" Width="75" Height="30" Margin="337,338,578,547" Command="{Binding Path=SaveEmployeeCommand}"/>
                     </Grid>
                 </TabItem>
             </TabControl>
