@@ -222,7 +222,7 @@ namespace MockupProject_K30_DotNet.ViewModel
             ResultEmployee.Email = "";
             ResultEmployee.Position = "";
             ResultEmployee.FSU = "";
-            Load();
+            LoadFSUers();
         }
 
         private string NameConverter(string name)
@@ -254,7 +254,7 @@ namespace MockupProject_K30_DotNet.ViewModel
         #region Constructor
         public MainViewModel()
         {
-            Load();
+            LoadFSUers();
 
             SearchEmployeeCommand = new RelayCommand(SearchEmployee);
             SaveEmployeeCommand = new RelayCommand(SaveEmployee);
@@ -264,18 +264,6 @@ namespace MockupProject_K30_DotNet.ViewModel
             AbbreviationDisplayName = AbbreviationNameConverter(DisplayName);
 
             //this.Tabs = new ObservableCollection<TabItem>();
-
-            //TabItem tab1 = new TabItem();
-            //tab1.Header = "tab1";
-            //tab1.Content = "example1";
-            //tab1.CloseButtonVisibility = Visibility.Visible.ToString();
-            //this.Tabs.Add(tab1);
-
-            //TabItem tab2 = new TabItem();
-            //tab2.Header = "tab2";
-            //tab2.Content = "example2";
-            //tab2.CloseButtonVisibility = Visibility.Hidden.ToString();
-            //this.Tabs.Add(tab2);
 
             //TabItem tab3 = new TabItem();
             //tab3.Header = "tab3";
@@ -291,7 +279,7 @@ namespace MockupProject_K30_DotNet.ViewModel
         #endregion
 
 
-        private void Load()
+        private void LoadFSUers()
         {
             ListFsu = new List<FSU>();
             List<string> allFSU = new EmployeeDAL().GetAllFSU();

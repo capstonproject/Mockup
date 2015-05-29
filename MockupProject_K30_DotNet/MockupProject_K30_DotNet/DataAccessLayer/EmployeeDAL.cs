@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Text.RegularExpressions;
 
 namespace MockupProject_K30_DotNet.DataAccessLayer
 {
@@ -63,42 +64,7 @@ namespace MockupProject_K30_DotNet.DataAccessLayer
             }
             return employees;
         }
-
-        public List<Employee> SearchEmployeeByIdentity(string name)
-        {
-            List<Employee> asc = new List<Employee>();
-            try
-            {
-                PrincipalContext context = new PrincipalContext(ContextType.Domain);
-                UserPrincipal user = UserPrincipal.FindByIdentity(context, name);
-
-                Employee objSurveyUsers = new Employee();
-
-                string displayName = user.DisplayName;
-                // hoang dinh vu (fsu12.bu11)
-                string[] words = displayName.Split(' ');
-                objSurveyUsers.FirstName = words[words.Length - 2].ToString();
-                objSurveyUsers.LastName = words[0];
-                foreach (var word in words)
-                {
-                    if (word[0] == '(')
-                    {
-                        objSurveyUsers.FSU = word.Split('.')[0];
-                        objSurveyUsers.Position = word.Split('.')[1];
-                    }
-                }
-
-                objSurveyUsers.Email = user.EmailAddress;
-                asc.Add(objSurveyUsers);
-            }
-
-            catch (Exception ex)
-            {
-                ex.InnerException.Message.ToString();
-            }
-            return asc;
-        }
-
+                
         public List<Employee> SearchEmployeeByName(string name)
         {
             List<Employee> employeesResult = new List<Employee>();
@@ -110,59 +76,63 @@ namespace MockupProject_K30_DotNet.DataAccessLayer
                 var searcher = new PrincipalSearcher();
                 searcher.QueryFilter = userPrin;
                 var results = searcher.FindAll();
-                var count = results.Count();
+                //var count = results.Count();
                 
                 foreach (var item in results)
                 {
                     Employee employeeResult = new Employee();
-                    string displayName = item.DisplayName;
 
-                    //string[] words = displayName.Split(' ');
-                    //employeeResult.FirstName = words[words.Length - 2].ToString();
-                    //employeeResult.LastName = words[0];
-                    //foreach (var word in words)
+                    string[] words = item.DisplayName.Split(' ');
+                    employeeResult.LastName = words[0];
+                    employeeResult.FirstName = item.Name[0].ToString();
+                    for (int i = 1; i < item.Name.Length; i++)
+                    {
+                        if (char.IsUpper(item.Name[i]))
+                        {
+                            break;
+                        }
+                        employeeResult.FirstName += item.Name[i].ToString();
+                    }
+                    Regex regex = new Regex(@".*\..*");
+                    if (regex.IsMatch(item.Description))
+                    {
+                        words = item.Description.Split('.');
+                        employeeResult.FSU = words[0];
+                        employeeResult.Position = words[1];
+                    }
+
+                    // Difference Scenario
+                    //if (displayName.IndexOf(' ') != -1)
                     //{
-                    //    if (word[0] == '(')
-                    //    {
-                    //        employeeResult.FSU = word.Split('.')[0];
-                    //        employeeResult.Position = word.Split('.')[1];
-                    //    }
+                    //    string[] words = displayName.Split(' ');
+                    //    employeeResult.FirstName = words[words.Length - 2];
+                    //    employeeResult.LastName = words[0];
                     //}
+                    //if (displayName.IndexOf('(') != -1)
+                    //{
+                    //    if (displayName.IndexOf('.') != -1)
+                    //    {
+                    //        employeeResult.FSU = displayName.Substring(displayName.IndexOf('(') + 1, displayName.IndexOf('.') - displayName.IndexOf('(') - 1);
+                    //        employeeResult.Position = displayName.Substring(displayName.IndexOf('.') + 1, displayName.IndexOf(')') - displayName.IndexOf('.') - 1);
+                    //    }
+                    //    else
+                    //    {
+                    //        employeeResult.FSU = displayName.Substring(displayName.IndexOf('(') + 1, displayName.IndexOf('(') - displayName.IndexOf(')') - 1);
+                    //    }
+                    //}                    
 
-                    if (displayName.IndexOf(' ') != -1)
-                    {
-                        string[] words = displayName.Split(' ');
-                        employeeResult.FirstName = words[words.Length - 2];
-                        employeeResult.LastName = words[0];
-                    }
-
-                    if (displayName.IndexOf('(') != -1)
-                    {
-                        if (displayName.IndexOf('.') != -1)
-                        {
-                            employeeResult.FSU = displayName.Substring(displayName.IndexOf('(') + 1, displayName.IndexOf('.') - displayName.IndexOf('(') - 1);
-                            employeeResult.Position = displayName.Substring(displayName.IndexOf('.') + 1, displayName.IndexOf(')') - displayName.IndexOf('.') - 1);
-                        }
-                        else
-                        {
-                            employeeResult.FSU = displayName.Substring(displayName.IndexOf('(') + 1, displayName.IndexOf('(') - displayName.IndexOf(')') - 1);
-                        }
-                    }
-                    
                     employeeResult.Email = item.UserPrincipalName;
                     employeesResult.Add(employeeResult);
-
                 }
             }
 
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show("Invalid format!");
+                MessageBox.Show("User don't have position!");
             }
             return employeesResult;
         }
-
-
+        
         public void AddEmployees(List<Employee> employees)
         {
             using (var context = new LinQModelDataContext())
