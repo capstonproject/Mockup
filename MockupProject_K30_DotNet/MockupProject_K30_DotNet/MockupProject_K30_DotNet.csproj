@@ -78,9 +78,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LinQModel.dbml</DependentUpon>
     </Compile>
+    <Compile Include="PresentationLayer\Model\FSU.cs" />
     <Compile Include="PresentationLayer\ViewModel\MainViewModel.cs" />
     <Compile Include="PresentationLayer\ViewModel\RelayCommand.cs" />
     <Compile Include="PresentationLayer\ViewModel\TabItem.cs" />
+    <Compile Include="PresentationLayer\ViewModel\TreeViewLineConverter.cs" />
     <Compile Include="PresentationLayer\ViewModel\ViewModelBase.cs" />
     <Compile Include="PresentationLayer\View\LoadingWindow.xaml.cs">
       <DependentUpon>LoadingWindow.xaml</DependentUpon>
@@ -126,7 +128,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BussinessLogicLayer\" />
-    <Folder Include="PresentationLayer\Model\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

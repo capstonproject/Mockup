@@ -1,4 +1,5 @@
 ﻿using MockupProject_K30_DotNet.DataAccessLayer;
+using MockupProject_K30_DotNet.PresentationLayer.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -66,6 +67,21 @@ namespace MockupProject_K30_DotNet.ViewModel
             {
                 _keySearch = value;
                 NotifyPropertyChanged("KeySearch");
+            }
+        }
+
+        private List<FSU> _listFsu;
+
+        public List<FSU> ListFsu
+        {
+            get { return _listFsu; }
+            set
+            {
+                if (_listFsu != value)
+                {
+                    _listFsu = value;
+                    NotifyPropertyChanged("ListFsu");
+                }
             }
         }
         #endregion //Properties
@@ -183,6 +199,17 @@ namespace MockupProject_K30_DotNet.ViewModel
         #region Constructor
         public MainViewModel()
         {
+            ListFsu = new List<FSU>();
+            var listEmployee = new EmployeeDAL().GetAllEmployee();
+            for (int i = 0; i < listEmployee.Count; i++)
+            {
+                var fsu = new FSU();
+                fsu.FsuName = listEmployee[i].FSU;
+                var listEm = new EmployeeDAL().GetEmployeeByFSU(listEmployee[i].FSU);
+                fsu.Employeees = listEm;
+                ListFsu.Add(fsu);
+            }
+
             SearchEmployeeCommand = new RelayCommand(SearchEmployee);
             SaveEmployeeCommand = new RelayCommand(SaveEmployee);
             ResultEmployee = new Employee();

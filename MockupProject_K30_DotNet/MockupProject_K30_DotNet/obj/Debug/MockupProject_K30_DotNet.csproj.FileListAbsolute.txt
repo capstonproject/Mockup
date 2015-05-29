@@ -53,3 +53,5 @@ D:\Mockup Project\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\bin\D
 D:\Mockup Project\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\bin\Debug\ru\System.Windows.Interactivity.resources.dll
 D:\Mockup Project\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\bin\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
 D:\Mockup Project\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\bin\Debug\zh-Hant\System.Windows.Interactivity.resources.dll
+D:\Mockup Project\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Mockup Project\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\MockupProject_K30_DotNet_MarkupCompile.lref
