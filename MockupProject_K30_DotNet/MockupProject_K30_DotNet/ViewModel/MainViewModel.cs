@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.DirectoryServices;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -94,12 +95,7 @@ namespace MockupProject_K30_DotNet.ViewModel
         }
 
         private void AddTab()
-        {
-            //if (SelectedTab != null)
-            //{
-            //    var tabTemp = SelectedTab as TabItem;
-
-            //}
+        {            
             int count = Tabs.Count();
             TabItem tab = new TabItem();
             tab.Header = string.Format("Tab {0}", count);
@@ -126,6 +122,7 @@ namespace MockupProject_K30_DotNet.ViewModel
             }          
         }
 
+        #region Constructor
         public MainViewModel()
         {
             this.Tabs = new ObservableCollection<TabItem>();
@@ -152,7 +149,32 @@ namespace MockupProject_K30_DotNet.ViewModel
             tabAdd.Header = "+";
             tabAdd.CloseButtonVisibility = Visibility.Hidden.ToString();
             this.Tabs.Add(tabAdd);
-           
         }
+        #endregion
+
+        #region Get all users Fsoft
+        public SearchResultCollection result()
+        {
+            SearchResultCollection resultCol;
+            try
+            {
+                string DomainPath = "LDAP://fsoft.fpt.vn";
+                DirectoryEntry searchRoot = new DirectoryEntry(DomainPath);
+                DirectorySearcher search = new DirectorySearcher(searchRoot);
+                search.Filter = "(&(objectClass=user)(objectCategory=person))";
+                //search.PropertiesToLoad.Add("samaccountname");
+                //search.PropertiesToLoad.Add("mail");
+                //search.PropertiesToLoad.Add("usergroup");
+                //search.PropertiesToLoad.Add("displayname");//first name
+                SearchResult result;
+                resultCol = search.FindAll();
+            }
+            catch (Exception exception)
+            {
+                exception.InnerException.Message.ToString();
+            }
+            return resultCol;
+        }
+        #endregion
     }
 }
