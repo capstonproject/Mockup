@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.DirectoryServices.AccountManagement;
 
 namespace MockupProject_K30_DotNet.ViewModel
 {
@@ -84,6 +85,29 @@ namespace MockupProject_K30_DotNet.ViewModel
                 }
             }
         }
+
+        private string _displayName;
+        public string DisplayName
+        {
+            get { return _displayName; }
+            set
+            {
+                _displayName = value;
+                NotifyPropertyChanged("DisplayName");
+            }
+        }
+
+        private string _abbreviationDisplayName;
+        public string AbbreviationDisplayName
+        { 
+            get { return _abbreviationDisplayName; }
+            set
+            {
+                _abbreviationDisplayName = value;
+                NotifyPropertyChanged("AbbreviationDisplayName");
+            }
+        }
+
         #endregion //Properties
 
         #region Command
@@ -201,6 +225,32 @@ namespace MockupProject_K30_DotNet.ViewModel
             Load();
         }
 
+        private string NameConverter(string name)
+        {
+            string convertedName = "";
+            string[] words = name.Split(' ');
+            for (int i = 0; i < words.Length - 1; i++)
+            {
+                convertedName += words[i];
+                if (i != words.Length - 2)
+                {
+                    convertedName += " ";
+                }
+            }
+            return convertedName;
+        }
+
+        private string AbbreviationNameConverter(string name)
+        {
+            string convertedName = "";
+            string[] words = name.Split(' ');
+            foreach (var word in words)
+            {
+                convertedName += word[0].ToString();
+            }
+            return convertedName;
+        }
+
         #region Constructor
         public MainViewModel()
         {
@@ -209,6 +259,9 @@ namespace MockupProject_K30_DotNet.ViewModel
             SearchEmployeeCommand = new RelayCommand(SearchEmployee);
             SaveEmployeeCommand = new RelayCommand(SaveEmployee);
             ResultEmployee = new Employee();
+
+            DisplayName = NameConverter(UserPrincipal.Current.DisplayName);
+            AbbreviationDisplayName = AbbreviationNameConverter(DisplayName);
 
             //this.Tabs = new ObservableCollection<TabItem>();
 
@@ -266,7 +319,6 @@ namespace MockupProject_K30_DotNet.ViewModel
                     fsu.Employees.Add(employeeDetail);
                 }
                 ListFsu.Add(fsu);
-
             }
         }
     }

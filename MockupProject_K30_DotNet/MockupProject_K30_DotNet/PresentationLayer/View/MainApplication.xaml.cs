@@ -26,7 +26,7 @@ namespace MockupProject_K30_DotNet.View
         {
             InitializeComponent();
             new LoadingWindow().ShowDialog();
-            mainGrid.DataContext = new MainViewModel();
+            DataContext = new MainViewModel();
         }
 
         private void Button_Close(object sender, RoutedEventArgs e)

@@ -182,13 +182,13 @@
                     <Path Data="F1M7.722,1.201L5.049,3.874 7.611,6.433 6.459,7.586 3.897,5.025 1.201,7.722 0,6.52 2.697,3.823 0.135,1.262 1.286,0.111 3.848,2.672 6.52,0z" Fill="#FF808180" Height="7.722" Width="7.722"/>
                 </Button>
             </Canvas>
-            <Canvas Width="100" HorizontalAlignment="Right">
+            <Canvas Width="100" HorizontalAlignment="Right" Margin="0,0,100,0">
                 <Path Data="F1M20,10C20,15.523 15.523,20 10,20 4.477,20 0,15.523 0,10 0,4.478 4.477,0 10,0 15.523,0 20,4.478 20,10" Fill="#FF008BA8" Height="20" Canvas.Left="1.4" Canvas.Top="26.333" Width="20"/>
                 <Path Data="F1M8,3.999C8,6.208 6.209,8 4,8 1.791,8 0,6.208 0,3.999 0,1.791 1.791,0 4,0 6.209,0 8,1.791 8,3.999" Fill="#FF00C340" Height="8" Canvas.Left="15.567" Canvas.Top="40.017" Width="8"/>
                 <Canvas x:Name="TextBlock8" Height="8.109" Canvas.Left="5.83" Canvas.Top="33.178" Width="9.28200000000015">
-                    <Path Data="F1M0.656,8.109C0.375,8.109,0.156,8.062,0,8L0,7.359C0.219,7.422 0.438,7.453 0.656,7.453 0.938,7.453 1.141,7.359 1.297,7.187 1.453,7 1.531,6.75 1.531,6.422L1.531,0 2.281,0 2.281,6.359C2.281,6.922 2.141,7.343 1.859,7.656 1.578,7.953 1.172,8.109 0.656,8.109" Fill="White" Height="8.109" Canvas.Left="0" Canvas.Top="0" Width="2.281"/>
-                    <Path Data="F1M5.125,3.14C5.125,4.203 4.828,5.015 4.25,5.578 3.672,6.14 2.844,6.422 1.766,6.422L0,6.422 0,0 1.969,0C2.953,0 3.719,0.281 4.281,0.828 4.844,1.39 5.125,2.156 5.125,3.14 M4.328,3.172C4.328,2.343 4.109,1.718 3.688,1.281 3.266,0.859 2.641,0.64 1.828,0.64L0.734,0.64 0.734,5.781 1.656,5.781C2.531,5.781 3.203,5.562 3.656,5.125 4.094,4.687 4.328,4.047 4.328,3.172" Fill="White" Height="6.422" Canvas.Left="4.157" Canvas.Top="0" Width="5.125"/>
+                    <TextBlock Text="{Binding Path=AbbreviationDisplayName}" RenderTransformOrigin="0.5,0.5" Width="14" Canvas.Top="-3" FontSize="6" Foreground="White"/>
                 </Canvas>
+                <TextBlock Height="20" Text="{Binding Path=DisplayName}" Canvas.Left="26" Canvas.Top="26" Width="171"/>
             </Canvas>
         </Grid>
 
