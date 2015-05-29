@@ -232,5 +232,17 @@ namespace MockupProject_K30_DotNet.DataAccessLayer
             }
             return lstADUsers;
         }
+
+        internal List<Employee> GetEmployeeNullFSU()
+        {
+            List<Employee> employees = new List<Employee>();
+            using (var context = new LinQModelDataContext())
+            {
+                employees = (from e in context.Employees
+                             where e.FSU == null
+                             select e).ToList();
+            }
+            return employees;
+        }
     }
 }

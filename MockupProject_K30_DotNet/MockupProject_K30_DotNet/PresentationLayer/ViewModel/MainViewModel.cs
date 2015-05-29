@@ -175,12 +175,16 @@ namespace MockupProject_K30_DotNet.ViewModel
             {
                 ResultEmployee = new EmployeeDAL().SearchEmployeeByName(KeySearch)[0];
             }
-            //ResultEmployee.ID = 0;
-            //ResultEmployee.FirstName = "";
-            //ResultEmployee.LastName = "";
-            //ResultEmployee.Email = "";
-            //ResultEmployee.Position = "";
-            //ResultEmployee.FSU = "";
+            else
+            {
+                ResultEmployee.ID = 0;
+                ResultEmployee.FirstName = "";
+                ResultEmployee.LastName = "";
+                ResultEmployee.Email = "";
+                ResultEmployee.Position = "";
+                ResultEmployee.FSU = "";
+                MessageBox.Show("No items match your search.");
+            }
         }
 
         private void SaveEmployee(object param)
@@ -200,15 +204,34 @@ namespace MockupProject_K30_DotNet.ViewModel
         public MainViewModel()
         {
             ListFsu = new List<FSU>();
-            var listEmployee = new EmployeeDAL().GetAllEmployee();
-            for (int i = 0; i < listEmployee.Count; i++)
+            List<string> allFSU = new EmployeeDAL().GetAllFSU();
+
+            foreach(var item in allFSU)
             {
                 var fsu = new FSU();
-                fsu.FsuName = listEmployee[i].FSU;
-                var listEm = new EmployeeDAL().GetEmployeeByFSU(listEmployee[i].FSU);
+                fsu.FsuName = item;
+                var listEm = new EmployeeDAL().GetEmployeeByFSU(item);
+
+                if (item == null)
+                {
+                    fsu.FsuName = "NULL";
+                    listEm = new EmployeeDAL().GetEmployeeNullFSU();
+                }
+
                 fsu.Employeees = listEm;
                 ListFsu.Add(fsu);
+                
             }
+
+            //var listEmployee = new EmployeeDAL().GetAllEmployee();
+            //for (int i = 0; i < listEmployee.Count; i++)
+            //{
+            //    var fsu = new FSU();
+            //    fsu.FsuName = listEmployee[i].FSU;
+            //    var listEm = new EmployeeDAL().GetEmployeeByFSU(listEmployee[i].FSU);
+            //    fsu.Employeees = listEm;
+            //    ListFsu.Add(fsu);
+            //}
 
             SearchEmployeeCommand = new RelayCommand(SearchEmployee);
             SaveEmployeeCommand = new RelayCommand(SaveEmployee);
