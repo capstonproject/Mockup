@@ -27,3 +27,29 @@ D:\GitHub\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\bin\Debug\zh-
 C:\Users\trungh2\Desktop\MockupProject_K30_DotNet\MockupProject_K30_DotNet\bin\Debug\MockupProject_K30_DotNet.exe.config
 C:\Users\trungh2\Desktop\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\MockupProject_K30_DotNet.exe
 C:\Users\trungh2\Desktop\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\MockupProject_K30_DotNet.pdb
+D:\Mockup Project\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\bin\Debug\MockupProject_K30_DotNet.exe.config
+D:\Mockup Project\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\MockupProject_K30_DotNet.exe
+D:\Mockup Project\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\MockupProject_K30_DotNet.pdb
+D:\Mockup Project\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\MockupProject_K30_DotNet.csprojResolveAssemblyReference.cache
+D:\Mockup Project\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\PresentationLayer\View\LoadingWindow.baml
+D:\Mockup Project\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\PresentationLayer\View\MainApplication.baml
+D:\Mockup Project\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\PresentationLayer\View\LoadingWindow.g.cs
+D:\Mockup Project\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\PresentationLayer\View\MainApplication.g.cs
+D:\Mockup Project\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\App.g.cs
+D:\Mockup Project\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\MockupProject_K30_DotNet_MarkupCompile.cache
+D:\Mockup Project\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\MockupProject_K30_DotNet.g.resources
+D:\Mockup Project\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\MockupProject_K30_DotNet.Properties.Resources.resources
+D:\Mockup Project\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\obj\Debug\MockupProject_K30_DotNet.csproj.GenerateResource.Cache
+D:\Mockup Project\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\bin\Debug\MockupProject_K30_DotNet.exe
+D:\Mockup Project\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\bin\Debug\MockupProject_K30_DotNet.pdb
+D:\Mockup Project\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\bin\Debug\System.Windows.Interactivity.dll
+D:\Mockup Project\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\bin\Debug\de\System.Windows.Interactivity.resources.dll
+D:\Mockup Project\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\bin\Debug\en\System.Windows.Interactivity.resources.dll
+D:\Mockup Project\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\bin\Debug\es\System.Windows.Interactivity.resources.dll
+D:\Mockup Project\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\bin\Debug\fr\System.Windows.Interactivity.resources.dll
+D:\Mockup Project\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\bin\Debug\it\System.Windows.Interactivity.resources.dll
+D:\Mockup Project\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\bin\Debug\ja\System.Windows.Interactivity.resources.dll
+D:\Mockup Project\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\bin\Debug\ko\System.Windows.Interactivity.resources.dll
+D:\Mockup Project\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\bin\Debug\ru\System.Windows.Interactivity.resources.dll
+D:\Mockup Project\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\bin\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
+D:\Mockup Project\Mockup\MockupProject_K30_DotNet\MockupProject_K30_DotNet\bin\Debug\zh-Hant\System.Windows.Interactivity.resources.dll

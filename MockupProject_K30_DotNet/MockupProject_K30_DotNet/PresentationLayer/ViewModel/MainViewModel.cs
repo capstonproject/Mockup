@@ -153,11 +153,9 @@ namespace MockupProject_K30_DotNet.ViewModel
         #endregion
 
         #region Get all users Fsoft
-        public SearchResultCollection result()
+        public SearchResultCollection resultCol()
         {
-            SearchResultCollection resultCol;
-            try
-            {
+           
                 string DomainPath = "LDAP://fsoft.fpt.vn";
                 DirectoryEntry searchRoot = new DirectoryEntry(DomainPath);
                 DirectorySearcher search = new DirectorySearcher(searchRoot);
@@ -166,13 +164,9 @@ namespace MockupProject_K30_DotNet.ViewModel
                 //search.PropertiesToLoad.Add("mail");
                 //search.PropertiesToLoad.Add("usergroup");
                 //search.PropertiesToLoad.Add("displayname");//first name
-                SearchResult result;
-                resultCol = search.FindAll();
-            }
-            catch (Exception exception)
-            {
-                exception.InnerException.Message.ToString();
-            }
+                //SearchResult result;
+                SearchResultCollection resultCol = search.FindAll();
+            
             return resultCol;
         }
         #endregion

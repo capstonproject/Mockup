@@ -59,15 +59,15 @@
         </Grid>
         
         <Grid Name="mainGrid" Margin="0,54,0,0">
-            <TabControl Height="947" HorizontalAlignment="Left" Margin="251,0,0,0" Name="tabControl1" VerticalAlignment="Top" Width="1015"
+            <!--<TabControl Height="947" HorizontalAlignment="Left" Margin="251,0,0,0" Name="tabControl1" VerticalAlignment="Top" Width="1015"
             ItemsSource="{Binding Tabs}" SelectedItem="{Binding SelectedTab}">
-                <!--Bind the SelectionChanged event of the tab-->
+                --><!--Bind the SelectionChanged event of the tab--><!--
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="SelectionChanged">
                         <i:InvokeCommandAction Command="{Binding SelectedChangedCommand}" />
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
-                <!--Header section-->
+                --><!--Header section--><!--
                 <TabControl.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal" Width="173">
@@ -81,13 +81,13 @@
                     </DataTemplate>
                 </TabControl.ItemTemplate>
 
-                <!--Content section-->
+                --><!--Content section--><!--
                 <TabControl.ContentTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Content}" />
                     </DataTemplate>
                 </TabControl.ContentTemplate>                
-            </TabControl>
+            </TabControl>-->
             <TabControl Height="947" HorizontalAlignment="Left" Margin="251,0,0,0" VerticalAlignment="Top" Width="1000">
                 <TabItem Header="Employee">
                     <Grid Background="Gray"></Grid>
