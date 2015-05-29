@@ -78,6 +78,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LinQModel.dbml</DependentUpon>
     </Compile>
+    <Compile Include="PresentationLayer\Model\EmployeeDetail.cs" />
     <Compile Include="PresentationLayer\Model\FSU.cs" />
     <Compile Include="PresentationLayer\ViewModel\MainViewModel.cs" />
     <Compile Include="PresentationLayer\ViewModel\RelayCommand.cs" />

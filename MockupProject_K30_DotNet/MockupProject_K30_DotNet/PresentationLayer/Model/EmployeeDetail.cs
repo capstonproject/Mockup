@@ -7,14 +7,15 @@ using System.Threading.Tasks;
 
 namespace MockupProject_K30_DotNet.PresentationLayer.Model
 {
-    public class FSU
+    public class EmployeeDetail
     {
-        public string FsuName { get; set; }
-        public List<EmployeeDetail> Employees { get; set; }
-        public FSU()
+        public string EmployTemplate { get; set; }
+        public List<string> Detail { get; set; }
+
+        public EmployeeDetail()
         {
-            FsuName = "";
-            Employees = new List<EmployeeDetail>();
+            EmployTemplate = "";
+            Detail = new List<string>();
         }
     }
 }

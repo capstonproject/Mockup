@@ -11,34 +11,19 @@
         WindowStartupLocation="CenterScreen">
     <Window.Resources>
 
+        <!--node FSU-->
         <HierarchicalDataTemplate DataType="{x:Type local:FSU}"
-      ItemsSource="{Binding Path=Employeees}">
+      ItemsSource="{Binding Path=Employees}">
             <TextBlock  Text="{Binding Path=FsuName}" />
         </HierarchicalDataTemplate>
-        <HierarchicalDataTemplate DataType="{x:Type local1:Employee}">
-            <StackPanel Orientation="Horizontal">
-                <ListView>
-                    <ListViewItem >
-                        <TextBlock Text="{Binding Path=FirstName}" />
-                    </ListViewItem>
-                    <ListViewItem >
-                        <TextBlock Text="{Binding Path=LastName}" />
-                    </ListViewItem>
-                    <ListViewItem >
-                        <TextBlock Text="{Binding Path=Email}" />
-                    </ListViewItem>
-                    <ListViewItem >
-                        <TextBlock Text="{Binding Path=Position }" />
-                    </ListViewItem>
-                </ListView>
-                <!--<TextBlock Text="{Binding Path=FirstName}" />
-                <TextBlock Text=" \n " />
-                <TextBlock Text="{Binding Path=LastName}" />-->
-            </StackPanel>
+        <!--node EmployeeTemplate-->
+        <HierarchicalDataTemplate DataType="{x:Type local:EmployeeDetail}" ItemsSource="{Binding Path=Detail}">
+            <TextBlock Text="{Binding Path=EmployTemplate}" />
         </HierarchicalDataTemplate>
-        <!--<DataTemplate DataType="{x:Type local1:Employee}">
-            <Label Content="{Binding FirstName}"/>
-        </DataTemplate>-->
+        <!--node EmployeeDetail-->
+        <HierarchicalDataTemplate DataType="String">
+            <TextBlock Text="{Binding Path=Detail}" />
+        </HierarchicalDataTemplate>
 
         <Style TargetType="TreeView">
             <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden"/>

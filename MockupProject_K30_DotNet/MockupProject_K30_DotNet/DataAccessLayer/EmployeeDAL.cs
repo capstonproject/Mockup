@@ -195,44 +195,7 @@ namespace MockupProject_K30_DotNet.DataAccessLayer
             }
             return Fsu;
         }
-
-        public List<Employee> GetADUsers()
-        {
-            List<Employee> lstADUsers = new List<Employee>();
-            try
-            {
-                string DomainPath = "LDAP://fsoft.fpt.vn";
-                DirectoryEntry searchRoot = new DirectoryEntry(DomainPath);
-                DirectorySearcher search = new DirectorySearcher(searchRoot);
-                search.Filter = "(&(objectClass=user)(objectCategory=person))";
-
-                SearchResultCollection resultCol = search.FindAll();
-                if (resultCol != null)
-                {
-                    for (int counter = 0; counter < resultCol.Count; counter++)
-                    {
-                        //string UserNameEmailString = string.Empty;                          
-
-                        string tempName = (String)resultCol[counter].Properties["samaccountname"][0];
-                        PrincipalContext context = new PrincipalContext(ContextType.Domain);
-                        UserPrincipal user = UserPrincipal.FindByIdentity(context, tempName);
-
-                        Employee objSurveyUsers = new Employee();
-                        objSurveyUsers.Email = user.EmailAddress;
-                        objSurveyUsers.FirstName = "mail";
-                        objSurveyUsers.LastName = "mail";
-                        //lstADUsers.Add(objSurveyUsers);
-                    }
-                }
-            }
-
-            catch (Exception ex)
-            {
-                ex.InnerException.Message.ToString();
-            }
-            return lstADUsers;
-        }
-
+        
         internal List<Employee> GetEmployeeNullFSU()
         {
             List<Employee> employees = new List<Employee>();
