@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MockupProject_K30_DotNet.PresentationLayer.ViewModel;
 
 namespace MockupProject_K30_DotNet.View
 {
@@ -20,8 +21,6 @@ namespace MockupProject_K30_DotNet.View
     /// </summary>
     public partial class MainApplication : Window
     {
-        
-
         public MainApplication()
         {
             InitializeComponent();
@@ -69,7 +68,13 @@ namespace MockupProject_K30_DotNet.View
                 }
             }              
         }
-    }
-   
-    
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if ((sender as TabControl).SelectedIndex == 0)
+                this.WindowState = WindowState.Normal;
+            //else
+            //    LoadFSUers();  
+        }
+    }    
 }

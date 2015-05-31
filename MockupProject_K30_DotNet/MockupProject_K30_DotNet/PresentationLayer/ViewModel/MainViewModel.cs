@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.DirectoryServices.AccountManagement;
+using System.Windows.Controls;
 
 namespace MockupProject_K30_DotNet.ViewModel
 {
@@ -107,8 +108,7 @@ namespace MockupProject_K30_DotNet.ViewModel
                 NotifyPropertyChanged("AbbreviationDisplayName");
             }
         }
-
-        #endregion //Properties
+        #endregion 
 
         #region Command
         private ICommand closeTabCommand;
@@ -123,15 +123,7 @@ namespace MockupProject_K30_DotNet.ViewModel
                 return closeTabCommand;
             }
         }
-        private void CloseTab()
-        {
-            if (SelectedTab != null)
-            {
-                this.Tabs.Remove(this.SelectedTab);
-            }            
-            SelectedTab = null;
-        }
-
+        
         private ICommand selectedChangedCommand;
         public ICommand SelectedChangedCommand
         {
@@ -160,11 +152,17 @@ namespace MockupProject_K30_DotNet.ViewModel
         }
 
         public ICommand SearchEmployeeCommand { get; set; }
-        public ICommand SaveEmployeeCommand { get; set; }
+        public ICommand SaveEmployeeCommand { get; set; }        
+        #endregion 
 
-        
-        #endregion //Command
-
+        private void CloseTab()
+        {
+            if (SelectedTab != null)
+            {
+                this.Tabs.Remove(this.SelectedTab);
+            }
+            SelectedTab = null;
+        }
         private void AddTab()
         {            
             int count = Tabs.Count();
@@ -251,6 +249,46 @@ namespace MockupProject_K30_DotNet.ViewModel
             return convertedName;
         }
 
+        public void LoadFSUers()
+        {
+            ListFsu = new List<FSU>();
+            try
+            {
+                List<string> allFSU = new EmployeeDAL().GetAllFSU();
+
+                foreach (var item in allFSU)
+                {
+                    var fsu = new FSU();
+                    fsu.FsuName = item;
+                    var listEm = new EmployeeDAL().GetEmployeeByFSU(item);
+
+                    if (item == null)
+                    {
+                        fsu.FsuName = "NULL";
+                        listEm = new EmployeeDAL().GetEmployeeNullFSU();
+                    }
+
+                    foreach (var employee in listEm)
+                    {
+                        EmployeeDetail employeeDetail = new EmployeeDetail();
+                        employeeDetail.EmployTemplate = employee.ID + " - " + employee.LastName + " " + employee.FirstName;
+                        employeeDetail.Detail.Add("First name: " + employee.FirstName);
+                        employeeDetail.Detail.Add("Last name: " + employee.LastName);
+                        employeeDetail.Detail.Add("Email: " + employee.Email);
+                        employeeDetail.Detail.Add("Position: " + employee.Position);
+                        fsu.Employees.Add(employeeDetail);
+                    }
+                    ListFsu.Add(fsu);
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("No data!");
+            }
+            
+        }
+
+        
         #region Constructor
         public MainViewModel()
         {
@@ -260,8 +298,15 @@ namespace MockupProject_K30_DotNet.ViewModel
             SaveEmployeeCommand = new RelayCommand(SaveEmployee);
             ResultEmployee = new Employee();
 
-            DisplayName = NameConverter(UserPrincipal.Current.DisplayName);
-            AbbreviationDisplayName = AbbreviationNameConverter(DisplayName);
+            try
+            {
+                DisplayName = NameConverter(UserPrincipal.Current.DisplayName);
+                AbbreviationDisplayName = AbbreviationNameConverter(DisplayName);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("You don't log into domain Fsoft yet!");
+            }            
 
             //this.Tabs = new ObservableCollection<TabItem>();
 
@@ -279,35 +324,6 @@ namespace MockupProject_K30_DotNet.ViewModel
         #endregion
 
 
-        private void LoadFSUers()
-        {
-            ListFsu = new List<FSU>();
-            List<string> allFSU = new EmployeeDAL().GetAllFSU();
-
-            foreach (var item in allFSU)
-            {
-                var fsu = new FSU();
-                fsu.FsuName = item;
-                var listEm = new EmployeeDAL().GetEmployeeByFSU(item);
-
-                if (item == null)
-                {
-                    fsu.FsuName = "NULL";
-                    listEm = new EmployeeDAL().GetEmployeeNullFSU();
-                }
-
-                foreach (var employee in listEm)
-                {
-                    EmployeeDetail employeeDetail = new EmployeeDetail();
-                    employeeDetail.EmployTemplate = employee.ID + " - " + employee.LastName + " " + employee.FirstName;
-                    employeeDetail.Detail.Add("First name: " + employee.FirstName);
-                    employeeDetail.Detail.Add("Last name: " + employee.LastName);
-                    employeeDetail.Detail.Add("Email: " + employee.Email);
-                    employeeDetail.Detail.Add("Position: " + employee.Position);
-                    fsu.Employees.Add(employeeDetail);
-                }
-                ListFsu.Add(fsu);
-            }
-        }
+        
     }
 }

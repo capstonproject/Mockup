@@ -15,11 +15,20 @@ namespace MockupProject_K30_DotNet.DataAccessLayer
         public List<Employee> GetAllEmployee()
         {
             List<Employee> employees = new List<Employee>();
-            using (var context = new LinQModelDataContext())
-            {
-                employees = (from e in context.Employees
-                             select e).ToList();
+            try
+            {               
+                using (var context = new LinQModelDataContext())
+                {
+                    employees = (from e in context.Employees
+                                 select e).ToList();
+                }
             }
+            catch (Exception)
+            {
+
+                MessageBox.Show("No data!");
+            }
+            
             return employees;
         }
 
@@ -56,12 +65,20 @@ namespace MockupProject_K30_DotNet.DataAccessLayer
         public List<Employee> GetEmployeeByFSU(string fsu)
         {
             List<Employee> employees = new List<Employee>();
-            using (var context = new LinQModelDataContext())
+            try
             {
-                employees = (from e in context.Employees
-                             where e.FSU == fsu
-                             select e).ToList();
+                using (var context = new LinQModelDataContext())
+                {
+                    employees = (from e in context.Employees
+                                 where e.FSU == fsu
+                                 select e).ToList();
+                }
             }
+            catch (Exception)
+            {
+                MessageBox.Show("No data!");
+            }
+            
             return employees;
         }
                 
@@ -76,12 +93,10 @@ namespace MockupProject_K30_DotNet.DataAccessLayer
                 var searcher = new PrincipalSearcher();
                 searcher.QueryFilter = userPrin;
                 var results = searcher.FindAll();
-                //var count = results.Count();
-                
+                                
                 foreach (var item in results)
                 {
                     Employee employeeResult = new Employee();
-
                     string[] words = item.DisplayName.Split(' ');
                     employeeResult.LastName = words[0];
                     employeeResult.FirstName = item.Name[0].ToString();

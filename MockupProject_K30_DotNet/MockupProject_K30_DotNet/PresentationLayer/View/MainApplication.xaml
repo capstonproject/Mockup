@@ -228,7 +228,8 @@
                     </DataTemplate>
                 </TabControl.ContentTemplate>                
             </TabControl>-->
-            <TabControl Height="947" HorizontalAlignment="Left" Margin="251,0,0,0" VerticalAlignment="Top" Width="1000">
+            <TabControl Height="947" HorizontalAlignment="Left" Margin="251,0,0,0" VerticalAlignment="Top" Width="1000"
+                        SelectionChanged="TabControl_SelectionChanged">
                 <TabItem Header="Employee">
                     <Grid Background="Gray">
                         <TreeView ItemsSource="{Binding ListFsu}">
