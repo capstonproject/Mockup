@@ -12,29 +12,9 @@ namespace MockupProject_K30_DotNet.DataAccessLayer
 {
     public class EmployeeDAL
     {
-        public List<Employee> GetAllEmployee()
-        {
-            List<Employee> employees = new List<Employee>();
-            try
-            {               
-                using (var context = new LinQModelDataContext())
-                {
-                    employees = (from e in context.Employees
-                                 select e).ToList();
-                }
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("No data!");
-            }
-            
-            return employees;
-        }
-
         public void SaveChangeEmployee(Employee employee)
         {
-            using (var context = new LinQModelDataContext())
+            using (var context = new DBEmployeeEntities())
             {
                 var employees = (from e in context.Employees
                                  where e.ID == employee.ID
@@ -47,14 +27,14 @@ namespace MockupProject_K30_DotNet.DataAccessLayer
                     myEmployee.FSU = employee.FSU;
                     myEmployee.Position = employee.Position;
                 }
-                context.SubmitChanges();
+                context.SaveChanges();
             }
         }
 
         public Employee GetEmployeeByID(int id)
         {
             Employee employee = new Employee();
-            using (var context = new LinQModelDataContext())
+            using (var context = new DBEmployeeEntities())
             {
                 employee = (from e in context.Employees
                             where e.ID == id
@@ -67,7 +47,7 @@ namespace MockupProject_K30_DotNet.DataAccessLayer
             List<Employee> employees = new List<Employee>();
             try
             {
-                using (var context = new LinQModelDataContext())
+                using (var context = new DBEmployeeEntities())
                 {
                     employees = (from e in context.Employees
                                  where e.FSU == fsu
@@ -147,29 +127,20 @@ namespace MockupProject_K30_DotNet.DataAccessLayer
             }
             return employeesResult;
         }
-        
-        public void AddEmployees(List<Employee> employees)
-        {
-            using (var context = new LinQModelDataContext())
-            {
-                context.Employees.InsertAllOnSubmit<Employee>(employees);
-                context.SubmitChanges();
-            }
-        }
 
         public void AddEmployee(Employee employee)
         {
-            using (var context = new LinQModelDataContext())
+            using (var context = new DBEmployeeEntities())
             {
-                context.Employees.InsertOnSubmit(employee);
-                context.SubmitChanges();
+                context.Employees.Add(employee);
+                context.SaveChanges();
             }
         }
 
         public List<string> GetAllFSU()
         {
             List<string> Fsu = new List<string>();
-            using (var context = new LinQModelDataContext())
+            using (var context = new DBEmployeeEntities())
             {
                 var query = (from e in context.Employees
                              select e.FSU).Distinct();
@@ -184,7 +155,7 @@ namespace MockupProject_K30_DotNet.DataAccessLayer
         internal List<Employee> GetEmployeeNullFSU()
         {
             List<Employee> employees = new List<Employee>();
-            using (var context = new LinQModelDataContext())
+            using (var context = new DBEmployeeEntities())
             {
                 employees = (from e in context.Employees
                              where e.FSU == null

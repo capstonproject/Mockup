@@ -72,9 +72,9 @@ namespace MockupProject_K30_DotNet.ViewModel
             }
         }
 
-        private List<FSU> _listFsu;
+        private ObservableCollection<FSU> _listFsu;
 
-        public List<FSU> ListFsu
+        public ObservableCollection<FSU> ListFsu
         {
             get { return _listFsu; }
             set
@@ -251,7 +251,7 @@ namespace MockupProject_K30_DotNet.ViewModel
 
         public void LoadFSUers()
         {
-            ListFsu = new List<FSU>();
+            ListFsu = new ObservableCollection<FSU>();
             try
             {
                 List<string> allFSU = new EmployeeDAL().GetAllFSU();

@@ -34,11 +34,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\Microsoft SDKs\Expression\Blend\.NETFramework\v4.5\Libraries\System.Windows.Interactivity.dll</HintPath>
@@ -72,12 +79,25 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DataAccessLayer\EmployeeDAL.cs" />
-    <Compile Include="DataAccessLayer\LinQModel.designer.cs">
+    <Compile Include="DataAccessLayer\DBEmployee.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>LinQModel.dbml</DependentUpon>
+      <DependentUpon>DBEmployee.Context.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataAccessLayer\DBEmployee.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBEmployee.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccessLayer\DBEmployee.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBEmployee.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccessLayer\Employee.cs">
+      <DependentUpon>DBEmployee.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccessLayer\EmployeeDAL.cs" />
     <Compile Include="PresentationLayer\Model\EmployeeDetail.cs" />
     <Compile Include="PresentationLayer\Model\FSU.cs" />
     <Compile Include="PresentationLayer\ViewModel\MainViewModel.cs" />
@@ -106,18 +126,18 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="DataAccessLayer\LinQModel.dbml.layout">
-      <DependentUpon>LinQModel.dbml</DependentUpon>
-    </None>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="DataAccessLayer\LinQModel.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>LinQModel.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
+    <EntityDeploy Include="DataAccessLayer\DBEmployee.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DBEmployee.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DataAccessLayer\DBEmployee.edmx.diagram">
+      <DependentUpon>DBEmployee.edmx</DependentUpon>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -132,6 +152,19 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DataAccessLayer\DBEmployee.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBEmployee.edmx</DependentUpon>
+      <LastGenOutput>DBEmployee.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DataAccessLayer\DBEmployee.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBEmployee.edmx</DependentUpon>
+      <LastGenOutput>DBEmployee.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
