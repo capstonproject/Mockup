@@ -237,6 +237,7 @@ namespace MockupProject_K30_DotNet.ViewModel
             ResultEmployee.Email = "";
             ResultEmployee.Position = "";
             ResultEmployee.FSU = "";
+            LoadFSUers();
         }
 
         private string NameConverter(string name)
