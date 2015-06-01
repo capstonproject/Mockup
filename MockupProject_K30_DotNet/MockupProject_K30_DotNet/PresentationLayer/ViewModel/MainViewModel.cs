@@ -211,8 +211,25 @@ namespace MockupProject_K30_DotNet.ViewModel
 
         private void SaveEmployee(object param)
         {
-            new EmployeeDAL().AddEmployee(ResultEmployee);
-            MessageBox.Show("Saved Employee successful!");
+            // check available
+            if (new EmployeeDAL().IsAvailabe(ResultEmployee.Email) == true)
+            {
+                MessageBoxResult dialog = new MessageBoxResult();
+                dialog = MessageBox.Show("Employee availabe. Do you want to update information?", "Availabe employee!", MessageBoxButton.YesNoCancel);
+                if (dialog == MessageBoxResult.Yes)
+                {
+                    // update
+                    new EmployeeDAL().UpdateEmployeeByEmail(ResultEmployee);
+                    MessageBox.Show("Updated Employee successful!");
+                }
+            }
+            else
+            {
+                // add
+                new EmployeeDAL().AddEmployee(ResultEmployee);
+                MessageBox.Show("Saved Employee successful!");
+            }
+            // reset
             KeySearch = "";
             ResultEmployee.ID = 0;
             ResultEmployee.FirstName = "";
@@ -220,7 +237,6 @@ namespace MockupProject_K30_DotNet.ViewModel
             ResultEmployee.Email = "";
             ResultEmployee.Position = "";
             ResultEmployee.FSU = "";
-            LoadFSUers();
         }
 
         private string NameConverter(string name)

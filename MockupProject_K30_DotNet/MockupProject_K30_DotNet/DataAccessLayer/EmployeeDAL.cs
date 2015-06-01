@@ -11,57 +11,7 @@ using System.Text.RegularExpressions;
 namespace MockupProject_K30_DotNet.DataAccessLayer
 {
     public class EmployeeDAL
-    {
-        public void SaveChangeEmployee(Employee employee)
-        {
-            using (var context = new DBEmployeeEntities())
-            {
-                var employees = (from e in context.Employees
-                                 where e.ID == employee.ID
-                                 select e).ToList();
-                foreach (Employee myEmployee in employees)
-                {
-                    myEmployee.FirstName = employee.FirstName;
-                    myEmployee.LastName = employee.LastName;
-                    myEmployee.Email = employee.Email;
-                    myEmployee.FSU = employee.FSU;
-                    myEmployee.Position = employee.Position;
-                }
-                context.SaveChanges();
-            }
-        }
-
-        public Employee GetEmployeeByID(int id)
-        {
-            Employee employee = new Employee();
-            using (var context = new DBEmployeeEntities())
-            {
-                employee = (from e in context.Employees
-                            where e.ID == id
-                            select e).SingleOrDefault();
-            }
-            return employee;
-        }
-        public List<Employee> GetEmployeeByFSU(string fsu)
-        {
-            List<Employee> employees = new List<Employee>();
-            try
-            {
-                using (var context = new DBEmployeeEntities())
-                {
-                    employees = (from e in context.Employees
-                                 where e.FSU == fsu
-                                 select e).ToList();
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("No data!");
-            }
-            
-            return employees;
-        }
-                
+    {                
         public List<Employee> SearchEmployeeByName(string name)
         {
             List<Employee> employeesResult = new List<Employee>();
@@ -128,40 +78,131 @@ namespace MockupProject_K30_DotNet.DataAccessLayer
             return employeesResult;
         }
 
+        public List<Employee> GetEmployeeByFSU(string fsu)
+        {
+            List<Employee> employees = new List<Employee>();
+            try
+            {
+                using (var context = new DBEmployeeEntities())
+                {
+                    employees = (from e in context.Employees
+                                 where e.FSU == fsu
+                                 select e).ToList();
+                }
+                if (employees.Count() == 0)
+                {
+                    throw new ArgumentException("No data!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return employees;
+        }
+        
         public void AddEmployee(Employee employee)
         {
-            using (var context = new DBEmployeeEntities())
+            try
             {
-                context.Employees.Add(employee);
-                context.SaveChanges();
+                using (var context = new DBEmployeeEntities())
+                {
+                    context.Employees.Add(employee);
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
         public List<string> GetAllFSU()
         {
             List<string> Fsu = new List<string>();
-            using (var context = new DBEmployeeEntities())
+            try
             {
-                var query = (from e in context.Employees
-                             select e.FSU).Distinct();
-                foreach (var fsu in query)
+                using (var context = new DBEmployeeEntities())
                 {
-                    Fsu.Add(fsu);
+                    var query = (from e in context.Employees
+                                 select e.FSU).Distinct();
+                    foreach (var fsu in query)
+                    {
+                        Fsu.Add(fsu);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
             return Fsu;
         }
-        
-        internal List<Employee> GetEmployeeNullFSU()
+
+        public List<Employee> GetEmployeeNullFSU()
         {
             List<Employee> employees = new List<Employee>();
-            using (var context = new DBEmployeeEntities())
+            try
             {
-                employees = (from e in context.Employees
-                             where e.FSU == null
-                             select e).ToList();
+                using (var context = new DBEmployeeEntities())
+                {
+                    employees = (from e in context.Employees
+                                 where e.FSU == null
+                                 select e).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
             return employees;
+        }
+
+        public bool IsAvailabe(string email)
+        {
+            try
+            {
+                using (var context = new DBEmployeeEntities())
+                {
+                    var query = from e in context.Employees
+                                where e.Email == email
+                                select e;
+                    if (query.Count() > 0)
+                    {
+                        return true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return false;
+        }
+
+        public void UpdateEmployeeByEmail(Employee employee)
+        {
+            try
+            {
+                using (var context = new DBEmployeeEntities())
+                {
+                    var employees = (from e in context.Employees
+                                     where e.Email == employee.Email
+                                     select e).ToList();
+                    foreach (var myEmployee in employees)
+                    {
+                        myEmployee.FirstName = employee.FirstName;
+                        myEmployee.LastName = employee.LastName;
+                        myEmployee.FSU = employee.FSU;
+                        myEmployee.Position = employee.Position;
+                    }
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
